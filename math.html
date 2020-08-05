@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OBJECT MATH</title>
+</head>
+
+<body>
+    <a href="index.html">Menu utama</a>
+    <P>
+        Objek Math adalah objek yang berisi fungsi-fungsi matematika dan beberapa konstanta untuk melakukan perhitungan matematika seperti sin, cos, tan, eksponen, akar kuadrat, dll.
+        Biar lebih gampang memahami isi dari objek Math, kita bagi-bagi dalam beberapa kelompok seperti pada gambar ini:
+    </P>
+    <p>
+        Ini adalah fungsi-fungsi yang umum digunakan dalam perhitungan matematis.
+
+Baiklah…
+
+Mari kita bahas lebih dalam lagi untuk tiap-tiap fungsi tersebut.
+
+Pertama kita mulai dari:
+Fungsi Trigonometri di Javascript
+
+Trigonometri adalah cabang ilmu matematika yang mempelajari tentang sudut dan panjang pada segitiga.1
+
+Dalam dunia komputer, ilmu ini biasanya diimplementasikan dalam komputer grafis.
+
+Kamu mungkin pernah membaca tutorial pembuatan game dengan Python.
+
+Di sana kita menggunakan trigonometri untuk traking pergerakan pointer.
+
+Implementasi trigonometri pada game
+
+Nah, di objek Math terdapat fungsi-fungsi untuk menghitung trigonometri.
+
+Misalkan kita ingin menghitung nilai sin dari 10, maka pada program kita bisa tulis seperti ini:
+
+var n = Math.sin(10);
+
+Variabel n akan berisi -0.5440211108893698 karena sin 10 adalah 0.5.
+
+Kamu bisa mencobanya sendiri melalui console Javascript:
+
+Trigonometri console javascript
+Fungsi Logaritma, Pangkat, dan Eksponensial di Javascript
+
+Logaritma adalah operasi matematika yang merupakan kebalikan (atau invers) dari eksponen atau pemangkatan. 2
+
+Objek Math di Javascript juga menyediakan fungsi log() untuk logaritma dan pow() untuk pemangkatan.
+
+Mari kita coba di console:
+
+Logaritma dan pemangkatan
+
+Kemudian untuk menghitung eksponensial, kita dapat menggunakan fungsi exp().
+
+Contoh:
+
+Exponensial di Javascript
+Fungsi Pembulatan di Javascript
+
+Apabila kita membutuhkan bilangan bulat (integer), kita bisa gungakan fungsi pembulatang di objek Math.
+
+Ada beberapa fungsi yang sering digunakan:
+
+    floor() membulatkan ke bawah;
+    round() membulatkan ke yang terdekat, bisa ke bawah dan ke atas;
+    ceil() membulatkan ke atas.
+
+Contoh:
+
+Pembulatan bilangan di javascript
+Fungsi Akar di Javascript
+
+Nah, kalau fungsi akar kuadrat…
+
+Kita bisa menghitungnya dengan fungsi sqrt().
+
+Contoh:
+
+Akar kuadrat di Javascript
+
+Lalu untuk akar kubik gimana?
+
+Gampang…
+
+Kita bisa gunakan fungsi cbrt().
+
+Contoh:
+
+Akar kubik
+
+Nah untuk akar n atau nth root, kita bisa akali dengan menggunakan fungsi pow().
+
+Contoh:
+
+Math.pow(n, 1/root);
+
+n adalah nilai yang akan kita cari, lalu root adalah akar n-nya.
+
+Akar n
+Fungsi Random dan Mutlak di Javascript
+
+Fungsi random adalah fungsi yang mengahilkan nilai acak antara 0.0 sampai 1.0.
+
+Contoh:
+
+fungsi random di javascript
+
+Jika ingin membuat nilai acak dari rentang nilai tertentu, maka kita bisa menggunakan bantuan fungsi floor() untuk membulatkan lalu dikali dengan nilai min dan max.
+
+Rumusnya akan seperti ini:
+
+Math.floor(Math.random() * (max - min) ) + min;
+
+Ini bisa kita bungkus dalam fungsi seperti ini:
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+Hasilnya:
+
+Random integer
+
+Berikutnya kita bahas tentan fungsi mutlak.
+
+Fungsi mutlak adalah fungsi yang menghasilkan nilai mutlak atau absolute.
+
+Contoh:
+
+var x = Math.abs(-2)
+
+Variabel x akan bernilai 2, karena fungsi abs() akan selalu memberikan nilai mutlak atau positif.
+Fungsi Minimum dan Maksimum di Javascript
+
+Fungsi minimum dan maksimum adalah fungsi untuk menentukan nilai paling kecil dan paling besar pada sekumpulan nilai.
+
+Fungsi ini bisa kita berikan input berupa urutan bilangan.
+
+Apabila kita ingin memberikan input array, maka array tersebut harus kita pecah isinya.
+
+Contoh:
+
+fungsi min dan max di javascript
+
+Perhatikan operator ..., ini adalah operator yang ditambahkan pada ES2015 yang berfungsi untuk memecah isi array dan string.
+Konstanta di Objek Math
+
+Selain menyediakan fungsi-fungsi matematika, objek Math juga menyediakan konstanta seperti PI, E, LN10, dll. yang bisa kita manfaatkan untuk perhitungan rumus tertentu.3
+
+Math.E        // returns Euler's number
+Math.PI       // returns PI
+Math.SQRT2    // returns the square root of 2
+Math.SQRT1_2  // returns the square root of 1/2
+Math.LN2      // returns the natural logarithm of 2
+Math.LN10     // returns the natural logarithm of 10
+Math.LOG2E    // returns base 2 logarithm of E
+Math.LOG10E   // returns base 10 logarithm of E 
+
+    </p>
+    <p>
+        <a href="https://www.petanikode.com/javascript-matematika/">Klik disini lebih jelasnya</a>
+    </p>
+</body>
+</html>

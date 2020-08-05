@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OBJECT</title>
+</head>
+
+<body>
+    <a href="index.html">Menu utama</a>
+    <p>
+        Apa itu Objek di Javascript dan Bagimana cara Membuatnya?
+        Objek sebenarnya adalah sebuah variabel yang menyimpan nilai (properti) dan fungsi (method).
+    </p>
+    <p>
+        Bagaimana cara kita memodelkan mobil ini di dalam kode program?
+        Bisa saja seperti ini:
+var car = "Mobil Fiat";
+Tapi variabel car hanya akan menyimpan nama mobil saja. Karena itu, kita harus menggunakan objek.
+Objek pada javascript, dapat dibuat dengan tanda kurung kurawal dengan isi berupa key dan value.
+Contoh:<br>
+Objek pada Javascript
+Kode di atas bisa juga ditulis seperti ini:
+
+<br>var car = {
+    <br>    type:"Fiat", 
+    <br>    model:"500", 
+    <br>color:"white"
+    <br>};
+    <br>
+Apa Perbedaan Properti dan Method?
+
+Pada contoh di atas, kita beru hanya membuat properti saja.
+
+Properti adalah ciri khas dari objek (variabel). Sedangkan method adalah perilaku dari objek (fungsi).
+
+Lalu bagaimana cara membuat metohd di dalam objek?
+
+Method dapat dibuat dengan cara mengisi nilai (value) dengan sebuah fungsi.
+
+Contoh:
+<br>
+<br>var car = {
+    <br>// properti
+    <br>type: "Fiat", 
+    <br>model: "500", 
+    <br>color: "white",
+
+    <br>// method
+    <br>start: function(){
+        <br>    console.log("ini method start");
+        <br>},
+        <br>drive: function(){
+            <br>console.log("ini method drive");
+            <br>},
+            <br>brake: function(){
+                <br>console.log("ini method brake");
+                <br>},
+                <br>stop: function(){
+                    <br>console.log("ini method stop");
+                    <br>}
+    
+                    <br>};
+<br>Cara Mengakses Properti dan Method Objek
+Kita sudah tahu cara membuat objek…
+Lalu pertanyaanya:
+Bagaimana cara mengakses properti dan method dari objek?
+Caranya menggunakan tanda titik atau dot (.), lalu diikuti dengan nama properti atau method.
+<br>Contoh:<br>
+<br>console.log(car.type);
+<br>console.log(car.color);
+<br>car.start();
+<br>car.drive();
+<br>perhatikan car.type, car.color, car.start(), dan car.drive()!
+<br>Cara mengakses properti dan method objek
+Untuk mengakses properti, kita cukup gunakan nama objek.properti. Sedangkan untuk method, kita harus menggunakan tanda kurung. Ini menyatakan kalau kita ingin mengeksekusi fungsi.
+Menggunakan Keyword this
+Kata kunci this digunakan untuk mengakses properti dan method dari dalam method (objek). <a href="contohobjek.html">contoh keyword this</a>
+    </p>
+    <p>
+        Membuat Class Objek dengan this
+Pada pemrograman berorientasikan objek, kita biasanya membuat objek dengan membuat instance dari class.
+Akan tetapi pada contoh-contoh di atas, kita membuat objeknya secara langsung.
+Lalu bagaimana kalau kita inign membuat objek yang lain dengan properti yang sama.
+Bisa saja dibuat dua seperti ini:
+
+var person = {
+    firstName: "Muhar",
+    lastName: "Dian",
+    showName: function(){
+        alert(`Nama: ${this.firstName} ${this.lastName}`);
+    }
+};
+
+var person2 = {
+    firstName: "Petani",
+    lastName: "Kode",
+    showName: function(){
+        alert(`Nama: ${this.firstName} ${this.lastName}`);
+    }
+};
+Ini tentu tidak efektif, jika kita ingin membuat banyak objek. Karena kita harus menulis ulang kode yang sama.
+Solusinya kita bisa gunakan class.
+Oh iya, saya ingin kasih tahu:
+Pada Javascript versi ES5, class belum ada. Fitur ini baru ditambahkan pada Javascript versi ES6.
+Pada ES5, kita bisa membuat class dengan fungsi. Lalu di dalamnya menggunakan kata kunci this. <a href="objectthis.html">Contoh Object this</a>
+Perhatikanlah contoh di atas!
+Kita membuat objek baru dengan kata kunci new, lalu diberikan nilai parameter firstName dan lastName.
+    </p>
+</body>
+</html>

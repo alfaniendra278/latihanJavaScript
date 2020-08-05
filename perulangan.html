@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Perulangan</title>
+</head>
+
+<body>
+    <script>
+        document.write(`Perulangan For`);
+            for(counter = 0; counter < 20; counter+=2){
+                document.write("<p>Perulangan ke-"+counter+"</p>");
+            }
+            // for(counter = 10; counter > 0; counter--){
+            //     document.write("<p>Perulangan ke "+counter+"</p>");
+            // }
+
+        document.write("<br><br>Perulangan While<br>");
+            var ulangi = confirm("Apakah anda mau mengulang?");
+            var counter = 0;
+
+            // while(ulangi){
+            //     var jawab = confirm("Apakah anda mau mengulang?")
+            //     counter++;
+            //     if(jawab == false){
+            //         ulangi = false;
+            //     }
+            // }
+            // while(ulangi){
+            //     counter++;
+            //     ulangi = confirm("Apakah anda mau mengulang?");
+            // }
+
+            do {
+                counter++;
+                ulangi = confirm("Apakah anda mau mengulang?");
+            } while(ulangi)
+
+            document.write("Perulangan sudah dilakuakn sebanyak "+ counter +" kali");
+
+        document.write("<br><br>Perulangan menggunakan Foreach dengan in<br>");
+            var languages = ["Javascript", "HTML", "CSS", "Typescript"];
+
+            // for(i = 0; i < languages.length; i++){
+            //     document.write(i+". "+ languages[i] + "<br/>");
+            // }
+
+            for(i in languages){
+                document.write(i+". "+ languages[i] + "<br/>");
+            }
+        document.write("<br><br>Perulangan Foreach dengan ForEach()<br>");
+            // kita punya array seperti berikut
+            var days = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
+
+            // //Kemudian kita tampilkan semua hari
+            // //dengan menggunakan method foreach
+            // days.forEach(function(day){
+            //     document.write("<p>" + day + "</p>");
+            // });
+            days.forEach((day) => {
+                document.write("<p>" + day + "</p>");
+            });
+        document.write("<br><br>Perulangan dengan Method repeat()<br>")
+            //apabila menggunakan for
+            for( let i = 0; i < 10; i++){
+                document.write("Ulangi kalimat <b>for</b> ini!");
+            }
+
+            //apabila menggunakan repeat()
+            document.write("<b>repeat</b> kalimat ini! ".repeat(10));
+        document.write("<br><br>Perulangan bersarang<br>");
+            for(let i = 0; i < 2; i++){
+                for(let j = 0; j < 2; j++){
+                    document.write("<p>Perulangan ke " + i + "," + j + "</p>");
+                }
+            }
+                var ulangi = confirm("apakah anda ingin mengulang?");
+                var counter = 0;
+
+                while (ulangi) {
+                    counter++;
+                    var bintang = "*".repeat(counter) + "<br>";
+                    document.write(counter + ": " + bintang);
+                    ulangi = confirm("apakah anda ingin mengulang?");
+                }
+    </script>
+</body>
+
+</html>

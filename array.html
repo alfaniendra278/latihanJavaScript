@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Struktur Data Array</title>
+</head>
+
+<body>
+    <script>
+        document.write("Struktur data Array Manual<br>")
+            var produk1 = "Modem";
+            var produk2 = "Hardisk";
+            var produk3 = "Flashdisk";
+
+            document.write(`${produk1}<br>`);
+            document.write(`${produk2}<br>`);
+            document.write(`${produk3}<br>`);
+        document.write("<br><br> Mengambil Struktur Data Array menggunakan '[id]'<br>")
+            // membuat array
+            var products = ["Senter", "Radio", "Antena", "Obeng"];
+
+            // mengambil radio
+            document.write(products[1]);
+        document.write("<br><br> mencetak isi array dengan Perulangan")
+            // membuat array
+            var products = ["Senter", "Radio", "Antena", "Obeng"];
+
+            document.write("<h3>Daftar Produk:</h3>");
+            document.write("<ol>");
+                // menggunakan perulangan untuk mencetak semua isi array
+                for(let i = 0; i < products.length; i++){
+                    document.write(`<li>${ products[i] }</li>`);
+                }
+            document.write("</ol>");
+
+        document.write("<br><br>Menggunakan Push dalam menambah data Array<br>");
+                 // membuat array
+                var products = ["Senter", "Radio", "Antena", "Obeng"];
+
+                // menambahkan tv ke dalam array products
+                products.push("Televisi");
+
+                // menapilkan isi array
+                document.write(products);
+        document.write("<br><br><p>Kita dapat menghapus data dengan nomer indeks tertentu dengan delete. Sedangkan <b>pop()</b> akan menghapus dari belakang <br>Kekurangan dari delete, ia akan menciptakan ruang kosong di dalam array. <br>Tentu ini kurang bagus <br> karena array akan tetap memiliki panjang 4. <br>Cara kedua menggunakan method pop(), kebalikan dari method push(). <br>Method pop() akan menghapus array yang ada di paling belakang. <br>Array pada javascript dapat kita pandang sebagai sebauh stack (tumpukan), <br>yang mana memiliki sifat LILO (Last in Last out).</p><br>");
+        document.write("Kita juga dapat menghapus data dari depan dengan menggunakan method <b>shift()</b>.<br>");
+        document.write("Apabila kita ingin menghapus data pada inteks tertentu, maka fungsi atau method yang digunakan adalah <b>splice()</b>. Contoh array.splice(index,total) <br>index=indeks dari data di dalam array yang akan dihapus<br>total=jumlah data yang akan dihapus dari indeks tersebut.<br>")
+        document.write("Untuk mengubah isi array kita bisa menggunakan a[b].<br>sebagaimana a = variableName,<br>b = nomor array yang mau diganti");
+                document.write("<br><br><b>Methode-methode Array</b><br>");
+                document.write("1. Method filter() :. Lihat di console");
+                    const angka = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+                    // Kita ambil data yang hanya habis dibagi dua saja
+                    const filteredArray = angka.filter((item) => {return item % 2 === 0});
+                    //const filteredArray = angka.filter(item => item % 2 === 0); //sederhananya
+                    console.log(filteredArray) // -> [2, 4, 6, 8]
+                document.write("<br><br>2. Method includes()<br> method ini berfungsi untuk mengecek apakah data ada didalam array atau tidak. <br>biasanya digunakan untuk melakukan pencarian untuk memastikan data sudah ada dalan array");
+                    var tanaman = ["Padi", "Kacang", "Jagung", "Kedelai"];
+
+                    // apakah kacang sudah ada di dalam array tanaman?
+                    var adaKacang = tanaman.includes("Kacang");
+
+                    console.log(adaKacang); // -> true
+
+                    // apakah bayam ada?
+                    var adaBayam = tanaman.includes("Bayam");
+
+                    console.log(adaBayam); // -> false
+                document.write("<br><br>3. Method sort()<br> method sort berfungsi untuk mengurutkan data pada array :. Lihat Console");
+                    var alfabet = ['a','f','z','e','r','g'];
+                    var angka2 = [3,1,2,6,8,5];
+
+                    console.log(alfabet.sort()); //->  ["a", "e", "f", "g", "r", "z"]
+                    console.log(angka2.sort()); // -> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    </script>
+</body>
+
+</html>

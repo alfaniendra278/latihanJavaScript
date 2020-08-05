@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Macam-macam Operator menggunakan JavaScript</title>
+</head>
+
+<body>
+    <p><a href="index.html">kembali </a></p>
+    <script>
+        document.write(`<b>Dialog Prompt</b><br/><br/>`);
+
+            //Saat kita hanya ingin menampilkan informasi saja, maka gunakan alert().
+            //Saat kita ingin jawaban konfirmasi dari pengguna, maka gunakan confirm().
+            //dan apabila kita ingin mengambil data teks dari pengguna, maka gunakan prompt().
+            
+            var nama = prompt("Nama kamu siapa?","");
+            document.write("<h1> Hey "+ nama + "</h1><br/><br/>");
+
+        document.write(`<b>Opertor Ternary</b><br/><br/>`);
+
+            var pertanyaan = confirm("Apakah kamu berumur diatas 18 tahun?")
+
+            var jawaban = pertanyaan ? "<h1>Selamat datang di Macam-macan Operator</h1><br/><br/>" : "Kamu tidak boleh di sini<br/><br/>";
+            document.write(jawaban);
+
+        document.write(`<b>Operator Aritmatika</b><br/><br/>`);
+            var a = 15;
+            var b = 4;
+            var c = 0;
+
+            // pengurangan
+            c = a - b;
+            document.write(`${a} - ${b} = ${c}<br/>`);
+
+            // Perkalian
+            c = a * b;
+            document.write(`${a} * ${b} = ${c}<br/>`);
+
+            // pemangkatan
+            c = a ** b;
+            document.write(`${a} ** ${b} = ${c}<br/>`);
+
+            // Pembagian
+            c = a / b;
+            document.write(`${a} / ${b} = ${c}<br/>`);
+
+            // Modulo
+            c = a % b;
+            document.write(`${a} % ${b} = ${c}<br/>`);
+
+            //penjumlahan
+            c = a + b;
+            document.write(`${a} + ${b} = ${c}<br/>`);
+
+            //penggabungan
+            d = "kalimatPertama"
+            e = "kalimatKedua"
+            c = d+e;
+            document.write(`${d} + ${e} = ${c}<br/>`);
+
+        document.write(`<br/><b>Penugasan</b><br/><br/>`);
+
+            document.write("Mula-mula nilai score...<br>");
+            // pengisian nilai
+            var score = 100;
+            document.write("score = "+ score + "<br/>");
+
+            // pengisian dan menjumlahan dengan 5
+            score += 5;
+            document.write("score = "+ score + "<br/>");
+
+            // pengisian dan pengurangan dengan 2
+            score -= 2;
+            document.write("score = "+ score + "<br/>");
+
+            // pengisian dan perkalian dengan 2
+            score *= 2;
+            document.write("score = "+ score + "<br/>");
+
+            // pengisian dan pembagian dengan 4
+            score /= 4;
+            document.write("score = "+ score + "<br/>");
+
+            // pengisian dan pemangkatan dengan 2
+            score **= 2;
+            document.write("score = "+ score + "<br/>");
+
+            // pengisian dan modulo dengan 3;
+            score %= 3;
+            document.write("score = "+ score + "<br/>");
+
+        document.write(`<br/><b>Operator Perbandingan</b><br/><br/>`);
+
+            var aku = 20;
+            var kamu = 19;
+            var kita = "kita";
+
+            // sama dengan 2
+            var hasil = aku == kamu;
+            document.write(`${aku} == ${kamu} = ${hasil}<br/>`);
+            
+            // sama dengan 3 dengan hasil false
+            var hasil = kita === kamu;
+            document.write(`${kita} === ${kamu} = ${hasil}<br/>`);
+
+            //sama dengan 3 dengan hasil true
+            var hasil = kita === kita;
+            document.write(`${kita} === ${kita} = ${hasil}<br/>`);
+
+            // lebih besar
+            var hasil = aku > kamu;
+            document.write(`${aku} > ${kamu} = ${hasil}<br/>`);
+            
+            // lebih besar samadengan
+            var hasil = aku >= kamu;
+            document.write(`${aku} >= ${kamu} = ${hasil}<br/>`);
+            
+            // lebih kecil
+            var hasil = aku < kamu;
+            document.write(`${aku} < ${kamu} = ${hasil}<br/>`);
+            
+            // lebih kecil samadengan
+            var hasil = aku <= kamu;
+            document.write(`${aku} <= ${kamu} = ${hasil}<br/>`);
+            
+            // tidak samadengan
+            var hasil = aku != kamu;
+            document.write(`${aku} != ${kamu} = ${hasil}<br/>`);
+        
+        document.write(`<br/><b>Opertor Logika</b><br/><br/>`);
+
+            var aku = 20;
+            var kamu = 19;
+
+            var benar = aku > kamu;
+            var salah = aku < kamu;
+
+            //operator && (and)
+            var hasil = benar && salah;
+            document.write(`${benar} && ${salah} = ${hasil}<br/>`);
+
+            //operator || (or)
+            var hasil = benar || salah;
+            document.write(`${benar} || ${salah} = ${hasil}<br/>`);
+
+            //operator ! (not)
+            var hasil = !benar;
+            document.write(`!${benar} = ${hasil}<br/>`);
+
+        document.write(`<br/><b>Opertor bitwise</b><br/><br/>`);
+
+            var x = 4;
+            var y = 3;
+
+            // operator bitwise and
+            var hasil = x & y;
+            document.write(`${x} & ${y} = ${hasil}<br/>`);
+
+            // operator bitwise or
+            var hasil = x | y;
+            document.write(`${x} | ${y} = ${hasil}<br/>`);
+
+            // operator bitwise xor
+            var hasil = x ^ y;
+            document.write(`${x} ^ ${y} = ${hasil}<br/>`);
+
+            // operator negasi
+            var hasil = ~x;
+            document.write(`~${x} = ${hasil}<br/>`);
+            
+            // operator bitwise right shift >>
+            var hasil = x >> y;
+            document.write(`${x} >> ${y} = ${hasil}<br/>`);
+
+            // operator bitwise right shift <<
+            var hasil = x << y;
+            document.write(`${x} << ${y} = ${hasil}<br/>`);
+
+            // operator bitwise right shift (unsigned) >>>
+            var hasil = x >>> y;
+            document.write(`${x} >>> ${y} = ${hasil}<br/>`);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM API Javascript</title>
+</head>
+
+<body>
+    <a href="index.html">Menu utama</a>
+    <!-- Elemen div yang akan kita pilih dari JS -->
+    <div id="tutorial"></div>
+    <p class="paragraf">Pada contoh di atas, kita memilih elemen dengan fungsi document.getElementById(). Lalu membuatkan objek untuk elemen tersebut. Setelah itu, kita bisa lakukan apapun yang diinginkan seperti mengubah teks dan style CSS.
+        Lalu pertanyaanya:
+        Bagaimana kalau ada lebih dari satu elemen yang dipilih?
+        Misalkan kita memilih elemen berdasarkan nama tag atau atribut class.
+        Jawabannya:
+        Eelemn yang akan terpilih akan menjadi sebuah array. Karena kita memilih sekumpulan elemen.
+        Array tersebut akan berisi objek DOM dari elemen-elemen yang terpilih.</p>
+    <p class="paragraf">Apa itu DOM API?
+        DOM merupakan singkatan dari Document Object Model.
+        Artinya, dokumen (HTML) yang dimodelkan dalam sebuah objek.
+        Objek dari dokumen ini menyediakan sekumpulan fungsi dan atribut/data yang bisa kita manfaatkan dalam membuat program Javascript. Inilah yang disebut API (Application Programming Interface). DOM tidak hanya untuk dokumen HTML saja. DOM juga bisa digunakan untuk dokumen XML dan SVG.
+        …dan DOM juga tidak hanya ada di Javascript saja, DOM juga ada pada bahasa pemrograman lain.</p>
+
+    <p class="paragraf">Bagaimana Cara Menggunakan DOM?
+        Seperti yang kita sudah katahui, DOM adalah sebuah objek untuk memodelkan dokumen HTML.
+        Objek DOM di javascript bernama document. Objek ini berisi segala hal yang kita butuhkan untuk memanipulasi HTML.
+        Jika kita coba ketik document pada console Javascript, maka yang akan tampil adalah kode HTML.
+        Di dalam objek document, terdapat fungsi-fungsi dan atribut yang bisa kita gunakan untuk memanipulasi dokumen HTML.
+        Sebagai contoh fungsi documen.write().
+        Fungsi ini digunakan untuk menulis sesuatu ke dokumen HTML.
+        
+        <br>Contoh:<br>
+        Coba ketik kode berikut di dalam consoel Javascript.
+        document.write("Hello World");
+        document.write("Saya Sedang Belajar Javascript");</p>
+
+    <p class="paragraf">Mengkases Elemen Tertentu dengan DOM
+        Objek document adalah model dari dokumen HTML. Objek ini berisi kumpulan fungsi dan atribut berupa objek dari elemen HTML yang bisa digambarkan dalam bentuk pohon seperti ini:
+        Objek DOM HTML
+        Struktur pohon ini akan memudahkan kita dalam menggunakan elemen tertentu.
+        Mari kita coba mengakses objek head dan body.</p>
+    <p class="paragraf">Apabila kita ingin mengakses elemen yang spesifik, terdapat beberapa fungsi yang bisa digunakan:
+
+        getElementById() fungsi untuk memilih elemen berdasarkan atribut id.
+        getElementByName() fungsi untuk memilih elemen berdasarkan atribut name.
+        getElementByClassName() fungsi untuk memilih elemen berdasarkan atribut class.
+        getElementByTagName() fungsi untuk memilih elemen berdasarkan nama tag.
+        getElementByTagNameNS() fungsi untuk memilih elemen berdasarkan nama tag.
+        querySelector() fungsi untuk memilih elemen berdasarkan query.
+        querySelectorAll() fungsi untuk memilih elemen berdasarkan query.
+        dan lain-lain.
+    
+    Fungsi-fungsi di atas cukup sering digunakan untuk mengakses elemen tertentu.
+    </p>
+    <p class="paragraf">Pada contoh di atas, kita memiliki beberapa buah paragraf dengan nama class paragraf.
+        Lalu kita mencoba memilih beberapa paragraf tersbut melalui javascript dengan method atau fungsi getElementByClassName().
+        Kemudian, hasilnya kita tampilkan ke dalam console Javascript.</p>
+    <p class="paragraf">Variabel paragraf akan berisi sebuah array yang di dalamnya terdapat tiga buah objek DOM dari paragraf.
+        Mari kita coba bereksperimen dengan mengubah warna teks dari paragraf pertama.
+        Paragraf pertama akan barada pada posisi indeks ke-0 di dalam array.Coba ketik perintah berikut di dalam console Javascript:
+        paragraf[0].style.color = "red"
+        Maka hasilnya, paragraf pertama akan berwarna merah.</p>
+    <p class="paragraf">Membuat Elemen dengan DOM API
+        DOM juga menyediakan fungsi untuk membuat elemen HTML.
+        Salah satunya adalah fungsi createElement().
+        <br>Contoh:<br>
+        document.createElement('p');<br>
+        Maka, akan tercipta elemen p baru. Namun tidak akan ditampilkan ke dalam halaman web.
+        Mengapa tidak ditampilakn?
+        Karena kita belum menambahkannya ke dalam body dokumen.
+        Cara menambahkannya ke body dokumen, kita bisa gunakan fungsi append().</p>
+        <h2 id="judul2">Delete Saya!</h2>
+        <p> h2 id="judul2" dengan isi "Delete Saya!"</p>
+        <p>Elemen berhasil dihapus dari halaman web, namaun elemen masih berada di dalam memori.</p>
+    
+    <p class="paragraf"> Contoh Program yang Memanfaatkan DOM
+        Kita sudah tahu cara mengakses elemen dengan DOM dan kita juga sudah paham cara menambahkan dan menghapus elemen.
+        Biar pemahamannya semakin mantap, coba contoh program berikut: <a href="aplikasiubahwarna.html">Klik</a></p>
+        
+
+    <script>
+         // mengakses elemen tutorial
+        var tutorial = document.getElementById("tutorial");
+        var paragraf = document.getElementsByClassName("paragraf");
+        var judul = document.createElement("h1"); //membuat element h1
+        var h2 = document.getElementById('judul2'); //memilih element berdasarkan id
+
+        //menghapus element yang sudah dipilih
+        h2.remove();
+
+        // mengisi teks ke dalam elemen
+        tutorial.innerText = "Tutorial Javascript";
+
+        //mengisi content element
+        judul.textContent = "Belajar JavaScript";
+
+        //menambahkan element ke dalam body tag
+        document.body.append(judul);
+
+        // memberikan CSS ke elemen
+        tutorial.style.backgroundColor = "gold";
+        tutorial.style.padding = "10px";
+
+        console.log(paragraf);
+        console.log("element sudah di hapus");
+        console.log(h2);
+
+        setInterval(function () {
+            paragraf[0].style.color = "red";
+            paragraf[1].style.color = "green";
+            paragraf[2].style.color = "blue";
+            paragraf[3].style.color = "red";
+            paragraf[4].style.color = "green";
+            paragraf[5].style.color = "blue";
+
+            setTimeout(function () {
+                paragraf[0].style.color = "black";
+                paragraf[1].style.color = "black";
+                paragraf[2].style.color = "black";
+                paragraf[3].style.color = "black";
+                paragraf[4].style.color = "black";
+                paragraf[5].style.color = "black";
+            }, 500)
+        }, 1000);
+    </script>
+    </body>
+</html>

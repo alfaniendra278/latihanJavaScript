@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tutorial HTML 5 Canvas</title>
+    </head>
+    <body>
+        <a href="../canvasrandom.html">kembali</a><br>
+        <canvas id="myCanvas" width="640" height="480" style="border:1px solid #000000;">
+        </canvas>
+        
+        <script type="text/javascript">
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+        
+            // for(i = 0; i < 10; i++){
+            //     for(j = 0; j < 10; j++){
+        
+            //         // isi nilai titik dengan bilangan acak
+            //         var x = Math.floor(Math.random() * canvas.width);
+            //         var y = Math.floor(Math.random() * canvas.height);
+        
+            //         // gambar lingkaran
+            //         ctx.beginPath();
+            //         ctx.arc(x, y, 20, 0, 2*Math.PI);
+            //         ctx.stroke();
+        
+            //     }
+            // }
+
+            for(i = 0; i < 10; i++){
+                for(j = 0; j < 10; j++){
+
+                    // isi nilai titik dengan bilangan acak
+                    var x = Math.floor(Math.random() * canvas.width);
+                    var y = Math.floor(Math.random() * canvas.height);
+
+                    // jari-jari random dari 5 sampai 30
+                    var r = Math.floor( Math.random() * (30 - 5) + 5 );
+
+                    // gambar lingkaran
+                    ctx.beginPath();
+                    ctx.arc(x, y, r, 0, 2*Math.PI);
+                    ctx.stroke();
+
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar AJAX dengan JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <a href="../index.html">Kembali</a><br>
+Menggambar Objek dengan Perulangan
+
+Pada contoh di artikel sebelumnya, kita sudah pernah menggamabar persegi dua kali.
+<p>
+script type="text/javascript">
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    ctx.strokeRect(10,10,100,100);
+    ctx.fillRect(120,10,100,100);
+/script>
+</p>
+Dengan hasil seperti ini:
+
+Menggambar dua persegi di HTML5 Canvas
+
+Lalu bagaimana kalau kita ingin menggambar 10 persegi?
+
+Kita bisa saja mengetik ulang fungsi untuk menggambarnya sebanyak 10x.
+<p>
+ctx.strokeRect(10,10,100,100);
+ctx.strokeRect(110,10,100,100);
+ctx.strokeRect(210,10,100,100);
+ctx.strokeRect(310,10,100,100);
+ctx.strokeRect(410,10,100,100);
+ctx.strokeRect(510,10,100,100);
+ctx.strokeRect(610,10,100,100);
+ctx.strokeRect(710,10,100,100);
+ctx.strokeRect(810,10,100,100);
+ctx.strokeRect(910,10,100,100);
+</p>
+Terus kalau mau gambar sebanyak 1000x?
+
+Apa mampu mengetik kode sebanyaka 1000 baris?
+
+Pasti capek ngetik 1000 baris dengan nilai x dan y yang berbeda-beda.
+
+karena itu, kita harus menggunakan perulangan.
+
+Contoh:
+
+Kita akan menggmabar 5 persegi dengan nilai x bertambah 10 di setiap kali perulangan dan y tetap.
+<p>
+    contoh : <a href="contohcanvasrandom/canvasrandom1.html">Klik</a>
+script type="text/javascript">
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    for(x = 10; x <= 50; x+=10){
+        ctx.strokeRect(x, 10, 10, 10);
+    }
+/script>
+</p>
+<p>
+Kita akan menggmbar persegi dengan ukuran 10x10 pada titik y=10 dan x berubah-ubah.
+
+Setiap perulangan nilai x akan bertambah 10.
+
+perulangan ke 1, nilai x = 10 dan y = 10
+perulangan ke 2, nilai x = 20 dan y = 10
+perulangan ke 3, nilai x = 30 dan y = 10
+perulangan ke 4, nilai x = 40 dan y = 10
+perulangan ke 5, nilai x = 50 dan y = 10
+
+Kalau kita nyatakan dalam persamaan garis lurus matematika:
+
+y = 10 (nilai y tetap 10)
+
+*ingat-ingat kembali pelajaran matematika (persamaan garis lurus, fungsi, dan aljabar linier) 😄
+
+Hasilnya: link di atas  
+</p>
+<p>
+    Lalu bagaimana kalau nilai y-nya sekarang yang berubah-ubah.
+
+Gampang, kita tinggal ubah menjadi seperti ini:
+
+script type="text/javascript">
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    for(y = 10; y <= 500; y+=10){
+        ctx.strokeRect(10, y, 10, 10);
+    }
+/script>
+
+Maka hasilnya:
+
+Menggambar 50 persegi dengan titik y berubah-ubah
+
+Masih mau lagi?
+
+Mari kita coba kedua-duanya berubah (nilai x dan y berubah).
+
+script type="text/javascript">
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    for(i = 10; i <= 500; i+=10){
+        ctx.strokeRect(i, i, 10, 10);
+    }
+/script>
+
+Nilai x dan y kita ambil dari variabel i.
+
+Hasilnya:
+
+Menggambar 50 persegi dengan titik y=x
+
+Gambar garis seperti di atas dapat dinyatakan dengan persamaan matematika:
+
+y = x
+</p>
+<p>
+    Menggunakan Perulangan Bersarang
+
+Perulangan bersarang (nested loop) artinya perulangan dalam perulangan.
+
+Sekarang mari kita coba menggambar persegi sebanyak 40 ke arah x (horizontal) dan 40 ka arah y (vertikal) dengan perulangan bersarang.
+
+script type="text/javascript">
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    for(x = 10; x <= 400; x+=10){
+        for(y = 10; y <= 400; y+=10){
+            ctx.strokeRect(x, y, 10, 10);
+        }
+    }
+/script>
+
+Maka banyak persegi yang akan digambar adalah 1600 buah persegi.
+<br>Contoh Kotak: <a href="contohcanvasrandom/contohrandom2.html">Klik</a>
+<br>Contoh Segitiga: <a href="contohcanvasrandom/contohrandom3.html">Klik</a>
+<br>Contoh Gambar berbentuk: <a href="contohcanvasrandom/contohrandom4.html">Klik</a>
+<br>Contoh Gambar berbentuk 2: <a href="contohcanvasrandom/contohrandom5.html">Klik</a>
+</p>
+
+<p>
+    Menggambar Objek dengan Fungsi Math.random()
+
+Fungsi random() adalah fungsi yang menghasilkan nilai acak dari 0,0 sampai 1,0. Fungsi ini akan kita manfaatkan untuk menentukan nilai x dan y agar objek yang kita gambar diletakkan secara acak di canvas.
+
+Berikut ini contoh nilai yang dihasilkan oleh fungsi random().
+<br>
+Karena fungsi random() menghasilkan nilai 0,xxx maka kita harus mengubahnya menjadi bilangan desimal (integer).
+
+Caranya kita bisa memanfaatkan fungsi floor() untuk melakukan pembulatan nilai.
+
+Misalnya seperti ini:
+
+Math.floor(Math.random() * 5)
+
+Maka nilai acak yang akan kita dapatkan adalah dari 0 sampai 5.
+
+Sekarang mari kita coba menggambar titik pada canvas dengan nilai x dan y acak dari 0 sampai panjang canvas-nya.
+<br>Contoh : <a href="contohcanvasrandom/contohrandom6.html">Klik</a>
+<br>Contoh kreasi kotal : <a href="contohcanvasrandom/contohrandom7.html">Klik</a>
+<br>Contoh kreari lingkaran : <a href="contohcanvasrandom/contohrandom8.html">Klik</a>
+</p>
+</body>
+</html>

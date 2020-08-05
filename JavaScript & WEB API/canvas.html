@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar AJAX dengan JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <a href="../index.html">Kembali</a><br>
+Apa itu Canvas?
+
+Dalam dunia nyata, canvas sering digunakan untuk menggambar dan melukis. Biasanya menggunakan pensil dan cat.
+
+Dalam pemrograman, canvas adalah elemen yang bisa digambar dengan kode. 2
+
+    Canvas adalah elemen baru di HTML5 untuk menggambar (render) grafik, image, dan teks.
+
+Cara Membuat Canvas di HTML
+
+Canvas dapat dibuat dengan tag canvas, jangan lupa juga untuk memberikan ukuran tinggi dan lebarnya.
+
+canvas id="myCanvas" width="640" height="480" style="border:1px solid #000000;"
+/canvas
+
+Kita berikan sedikit style style="border:1px solid #000000;" untuk membuat garis tepi.
+
+Selanjutnya kita harus menggunakan DOM API untuk memanipulasi canvas, biasanya dilakukan seperti ini:
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+Fungsi document.getElementById("myCanvas") untuk memilih elemen HTML dengan id myCanvas.
+
+Selanjutnya variabel ctx (konteks) adalah objek dari canvas yang bisa kita manfaatkan untuk menggambar.
+
+Contoh kode lengkapnya:  <a href="contohcanvas/contohcanvas.html">Klik</a>
+<p>
+    Menggambar di Canvas
+
+Jika pada dunia nyata kita menggunakan pensil untuk menggambar, maka di canvas HTML5 menggunakan objek ctx.
+
+Objek ctx bisa kita anggap sebagai pensil. Objek ini memiliki beberapa method untuk menggambar di canvas seperti fillRect(), arc(), fillText(), dsb.
+
+Nah untuk menggambar dengan method-method tersebut, kita harus menentukan koordinat titik x dan y-nya.
+
+Karena canvas terdiri dari kumpulan piksel yang membentuk diagram kartesius terbalik.
+
+Diagram Kartesius Canvas
+Cara Menggambar Titik pada Canvas
+
+Pertama kita akan coba menggambar sebuah titik.
+
+Dalam seni rupa, titik adalah bagian terkecil dari sebuah objek yang menempati suatu ruang. Sedangkan dalam ilmu matematika geometri, titik adalah objek 0-dimensi yang tidak memiliki panjang, lebar, dan tinggi. 3
+
+Tapi dalam komputer titik adalah ukuran 1 piksel dari layar.
+
+Untuk menggambar titik pada canvas, kita dapat menggunakan method fillRect() dengan ukuran 1x1 piksel.
+
+ctx.fillRect(x,y,1,1);
+
+Variabel x dan y kita ganti dengan nilai koordinatnya, misalkan kita ingin menggambar titik pada koordinat (10,10).
+
+ctx.fillRect(10,10,1,1);
+
+Mari kita coba dalam kode: <a href="contohcanvas/contohcanvas2.html">Klik</a>
+</p>
+<p>
+    Cara Menggambar Garis pada Canvas
+
+Garis adalah kumpulan dari titik-titik yang saling terhubung. Ada empat fungsi yang kita butuhkan untuk membuat garis.
+
+    ctx.beginPath() untuk membuat garis baru.
+    ctx.moveTo(x,y) untuk menentukan titik awal.
+    ctx.lineTo(x,y) untuk menentukan titik akhir.
+    ctx.stroke() untuk menggambar garisnya.
+
+Mari kita coba…
+
+Misalkan kita ingin menggambar garis dari titik (10,10) sampai titik (50,50). <a href="contohcanvas/contohcanvas3.html">Klik</a>
+</p>
+<p>
+    Cara Menggambar Persegi pada Canvas
+
+Ada tiga fungsi yang digunakan untuk menggambar persegi pada canvas:
+
+    ctx.strokeRect(x,y,w,h) persegi dengan garis (outline) saja.
+    ctx.fillRect(x,y,w,h) persegi dengan polesan warna (default-nya hitam).
+    ctx.clearRect(x,y,w,h) persegi transparan untuk menghapus.
+
+Seperti biasa, kita harus memberikan titik koordinat x dan y. Sementara nilai w dan h untuk lebar dan tingginya.
+
+Mari kita coba: <a href="contohcanvas/contohcanvas4.html">Klik</a>
+</p>
+<p>
+    Lalu bagaimana contoh yang clearRect()?
+
+Method clearRect() digunakan untuk menghapus gambar.
+
+Contohnya: Kita ingin menhapus pada titik (5,5) sampai (20,20).
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+ctx.strokeRect(10,10,100,100);
+ctx.clearRect(5,5,20,20);
+ctx.fillRect(120,10,100,100);
+
+Maka hasilnya: <a href="contohcanvas/contohcanvas5.html">Klik</a>
+</p>
+<p>
+    Cara Menggambar Segitiga pada Canvas
+
+Segitiga tidak memiliki method tesendiri seperti persegi (rectangle). Namun, bukan berarti kita tidak bisa menggambarnya.
+
+Segitiga dapat digambar menggunakan fungsi/method dari garis.
+
+Contohnya: <a href="contohcanvas/contohcanvas6.html">Klik</a>
+</p>
+<p>
+    Perhatikan: di sana ada fungsi ctx.closePath(), tugasnya untuk menggambar garis dari titik terakhir ke titik awal.
+
+    Pertama gambar garis dari titik awal ke titik ke-2:
+
+    ctx.moveTo(100, 100);
+    ctx.lineTo(100, 300);
+    
+    Gambar garis dari titik awal ke titik ke-2
+    
+    Lalu buat garis dari titik ke-2 menuju ke titik 3:
+    
+    ctx.lineTo(300, 300);
+    
+    Gambar garis dari titik ke-2 menuju titik ke-3
+    
+    Terakhir, buat garis dari titik ke-3 menuju ke titik awal:
+    
+    ctx.closePath();
+    
+    Gambar garis dari titik ke-3 ke titik awal
+    
+    Maka jadilah segitiga… 😄
+</p>
+<P>
+    Cara Menggambar Lingkaran pada Canvas
+
+Lingkaran digambar dengan method arc(). Method ini memiliki 5 parameter yang wajib diberikan.
+
+ctx.arc(x, y, r, sudutAwal, sudutAkhir, arah);
+
+Paramter:
+
+    x untuk menentukan koordinat x;
+    y untuk menentukan koordinat y;
+    r untuk menentukan jari-jari lingkaran;
+    sudutAwal sudut awal dengan satuan radian (0 radian dimulai dari arah jam 3);
+    sudutAkhir sudut akhir dengan satuan radian;
+    arah (opsional) untuk menentukan arah menggambar lingkaran:
+        jika diberikan nilai true maka akan menggambar berlawanan dengan arah jarum jam.
+        jika false maka akan menggambar searah dengan jarum jam.
+        Nilai default-nya adalah false.
+
+Paham…?
+
+Mari kita coba: 
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+ctx.arc(95, 50, 40, 0, 2*Math.PI);
+ctx.stroke();
+<br>Contoh: <a href="contohcanvas/contohcanvas7.html">Klik</a>
+</P>
+<p>
+    Penjelasan:
+
+Pertama kita mulai menggmabar dengan beginPath(), gunakan selalu fungsi ini untuk mulai menggmabar.
+
+Kedua menggmabar lingkaran dengan fungsi arc() dengan parameter yang ditentukan. Lingkaran digambar pada titik (95, 50) dengan ukuran jari-jari 40 piksel.
+
+Mulai digambar dari arah jam 3 (0 radian) menuju kembali ke arah jam 3 (2*π radian). 4
+
+Animasi Radian
+
+Gampang kan?
+</p>
+<p>
+    Cara Meyisipkan Teks pada Canvas
+
+Ada dua fungsi untuk membuat teks:
+
+    strokeText() untuk teks dengan garis luar (outline) saja.
+    fillText() untuk teks dengan warna (default hitam).
+
+Fungsi tersebut memiliki tiga parameter yang wajib diberikan:
+
+ctx.fillText("Teks yang akan dibuat", x, y);
+
+Mari kita coba:
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+ctx.font = "30px arial";
+ctx.fillText("Terima kasih sudah berkunjung ke:",10,50);
+
+ctx.font = "64px Arial";
+ctx.strokeText("PETANIKODE.com",10,120);
+<a href="contohcanvas/contohcanvas8.html">Klik</a>
+</p>
+<p>
+    Cara Me-render Gambar pada Canvas
+
+Terakhir, kita akan coba me-render gambar ke canvas. Untuk melakukannya, kita membutuhkan sebuah gambar dan menggunakan fungsi drawImage() untuk merender-nya ke canvas.
+
+drawImage(img, x, y);
+
+Kita akan menggunakan gambar dari W3Schools: img_the_scream.jpg
+
+.
+
+Pertama silahkan buat elemen img>:
+
+p>Gambar yang akan di-render: /p>
+img id="scream" src="https://www.w3schools.com/html/img_the_scream.jpg" alt="The Scream" width="220" height="277">
+
+Kemudian buat tombol render:
+
+p>button onclick="renderImage()">Render Image/button>/p>
+
+Terakhir membuat fungsi renderImage():
+
+function renderImage() {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // ambil gambar dari elemen img>
+    var img = document.getElementById("scream");
+
+    // render ke Canvas
+    ctx.drawImage(img,10,10);
+}
+
+Kode lengkapnya: <a href="contohcanvas/contohcanvas9.html">Klik</a>
+</p>
+</body>
+</html>

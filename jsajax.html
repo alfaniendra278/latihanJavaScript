@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Belajar Ajax </title>
+</head>
+<body>
+    <p>
+        <a href="index.html">Menu utama</a>
+    </p>
+        <p>
+            Apa itu AJAX?
+
+AJAX merupakan singkatan dari Asynchronous Javascript Aand XML.
+
+AJAX berfungsi untuk:
+
+    Mengambil data dari server secara background;
+    Update tampilan web tanpa harus relaod browser;
+    Mengirim data ke server secara background.
+
+Pada dasarnya AJAX hanya menggunakan objek XMLHttpRequest untuk berkomunikasi dengan server.
+
+Kita bisa bisa melihat proses AJAX melalui inspect elemen di web browser, lalu buka tab Network dan aktifkan filter XHR (XML HTTP Request).
+
+Melihat proses AJAX secara Background
+
+Oh iya, meskipun di AJAX ada kata “XML”… Bukan berarti hanya mendukung format XML saja.
+
+AJAX juga mendukung format JSON, Plain Text, dan HTML.
+Cara Menggunakan Ajax di Javascript
+
+Langkah-langkah menggunakan AJAX seperti ini:
+
+    Membuat Objek Ajax
+
+    var xhr = new XMLHttpRequest();
+
+    Menentukan Fungsi Handler untuk Event
+
+    xhr.onreadystatechange = function() { ... };
+    xhr.onload = function() { ... };
+    xhr.onerror = function() { ... };
+    xhr.onprogress = function() { ... };
+
+    Menentukan Method dan URL
+
+    xhr.open("GET", url, true);
+
+    Mengirim Request
+
+    xhr.send(); 
+            <br><br>Contoh: <a href="contohajax.html">Link</a> <br>
+        </p>
+        <p>
+            Pada contoh di atas, kita mengambil data dari server Github dengan methode GET. Lalu hasilnya langsung dimasukan ke dalam elemn <div id="hasil">.
+
+                Event yang kita gunakan adalah onreadystatechange, pada event ini kita bisa mengecek state dan status AJAX.
+                
+                if(this.readyState == 4 && this.status == 200){
+                    //...
+                }
+                
+                Kode state 4 artinya done dan status 200 artinya sukses. Berikut ini daftar kode state AJAX.1
+                Kode	State	Keterangan
+                0	UNSENT	Objek AAJAX sudah dibuat tapi belum memanggil method open().
+                1	OPENED	Method open() sudah dipanggil.
+                2	HEADERS_RECEIVED	Method send() sudah dipanggil, dan di sini sudah tersedia header status.
+                3	LOADING	Downloading; sedang mendownload data.
+                4	DONE	Operasi AJAX selesai.
+                
+                Sementara untuk status header 200 adalah status HTTP Request. Biasanya kode di atas 200 artinya baik dan di bawah 200 artinya buruk.
+                
+                Lalu coba perhatikan kode ini:
+                
+                xhr.open("GET", url, true);
+                
+                Terdapat tiga parameter yang kita berikan kepada method open():
+                
+                1. GET adalah metode request yang akan digunakan;
+                2. url adalah alamat URL tujuan;
+                3. true adalah untuk mengeksekusi AJAX secara asynchronous.
+        </p>
+        <p>Mari kita lanjutkan dengan contoh yang lainnya. Silahkan ubah isi file HTML yang tadi menjadi seperti ini: <a href="contohajax2.html">Klik</a> </p>
+        <p>
+            Mengirim Data ke Server dengan AJAX <a href="contohajax3.html"> Klik </a>
+        </p>
+        <p>
+            AJAX Menggunakan JQuery
+
+JQuery adalah library Javascript yang menyederhanakan fungsi-fungsi Javascript. Pada JQuery, AJAX dapat dibuat seperti ini:
+
+// load data ke elemen tertentu via AJAX
+$(selector).load(URL,data,callback);
+
+// ambil data dari server
+$.get(URL,callback);
+
+// kirim data dari Server
+$.post(URL,data,callback); 
+<br><br>mari kita coba : <a href="ajax-jquery.html">Klik</a>
+<br>Dengan fungsi $("#result").load(), kita bisa mengambil data dengan AJAX dan langsung menampilkannya pada elemen yang dipilih.
+
+Fungsi JQuery load() cocoknya untuk mengambil bagian dari HTML untuk ditampilkan.
+
+<br>Contoh lainnya menggunakan metode GET: <a href="contohajaxget.html"> klik</a>
+<br>Nah untuk mengirim data dengan AJAX di JQuery, caranya hampir sama seperti mengambil data dengan $.get().
+
+script
+var url = "https://jsonplaceholder.typicode.com/posts";
+var data = {
+    title: "Tutorial AJAX dengan JQuery",
+    body: "Ini adalah tutorial tentang AJAX",
+    userId: 1
+};
+$.post(url, data, function(data, status){
+    // data terkkirim, lakukan sesuatu di sini
+});
+script
+        </p>
+        <p>
+            AJAX Menggunakan Fetch API
+
+Fetch artinya mengambil. Metode fetch bisa jadi alternatif untuk AJAX.
+
+Methode ini mulai hadir pada Javascript versi ES6.
+
+Perbedaanya dengan XMLHttpRequest dan JQuery adalah:
+
+    Fetch akan mengembalikan sebuah promise;
+    Secara bawaan (default), fetch tidak akan mengirim atau menerima cookie dari server.2
+    Fetch dapat digunakan di web browser dan juga Nodejs dengan modul node-fetch.
+
+Berikut ini sintak dasar penggunaan Fetch. 
+<br>fetch('http://example.com/movies.json')
+.then(function(response) {
+  return response.json();
+})
+.then(function(myJson) {
+  console.log(JSON.stringify(myJson));
+});<br>
+Dan untuk pengiriman data dengan metode POST, bentuknya seperti ini:
+
+fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json",
+            // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    })
+    .then(response => response.json()); // parses JSON response into native Javascript objects
+
+Mari kita coba…
+Berikut ini contoh pengambilan data menggunakan fetch:
+<a href="ajaxfetchapi.html"> klik</a>
+        </p>
+        <P>
+            Ajax Menggunakan Axios
+
+Axios hampir sama seperti fetch. Bedanya Axios adalah sebuah library sedangkan fetch adalah API yang tersedia di web browser.
+
+Axios juga sama-sama bisa digunakan di web browser dan Nodejs.
+
+Contoh AJAX dengan Axios:
+
+axios.get('https://jsonplaceholder.typicode.com/posts/')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+Mari kita coba dalam HTML: <a href="ajaxaxios.html">Klik</a>
+        </P>
+    </body>
+</html>

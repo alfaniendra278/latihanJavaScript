@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tutorial HTML 5 Canvas</title>
+    </head>
+    <body>
+        <a href="../canvas.html">kembali</a><br>
+        <canvas id="myCanvas" width="640" height="480" style="border:1px solid #000000;">
+        </canvas>
+
+        <script type="text/javascript">
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+
+            ctx.beginPath(); // mulai menggmabar
+            ctx.moveTo(10,10);
+            ctx.lineTo(50,50);
+            ctx.stroke();
+        </script>
+
+    </body>
+</html>
