@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar AJAX dengan JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <a href="../index.html">Kembali</a><br>
+    <p>
+Apa itu Google Maps API?
+
+Google Menyediakan Google Maps API yang memungkinkan kita membangun aplikasi dengan memanfaatkan Google Maps.
+
+Google Maps API (Application Programming Interface) merupakan sebuah API yang disediakan oleh Google untuk menggunakan peta Google (Google Map) dalam aplikasi yang kita bangun. Google Maps API memungkinkan kita memodifikasi peta dan informasi yang ada di dalamnya.
+
+Google Maps API tersedia untuk platform:
+
+Platform Google Maps
+
+    Web adalah Google Maps API yang digunakan pada Web.
+    Android adalah Google Maps API yang digunakan pada aplikasi Android.
+    iOS adalah Google Maps API yang digunakan pada aplikasi iOS.
+    Web Service adalah penggunaan Google Maps melalui Web Service.
+
+Pada kesempatan ini kita akan menggunakan Google Maps API untuk Web.
+Menampilkan Peta Google Maps di Web
+
+Ada beberapa langkah yang harus kita lakukan untuk menampilkan peta Google Maps di dalam Web:
+
+    Menyisipkan library Google Map di dalam tag <head> atau di dalam <body>.
+
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    Membuat fungsi initialize() untuk menyiapkan peta:
+
+    function initialize() { … }
+
+    Membuat properti yang dibutuhkan peta
+
+    var propertiPeta = {
+        center:new google.maps.LatLng(-8.5830695,116.3202515),
+        zoom:9,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+
+    Properti ini ditulis di dalam fungsi initialize().
+
+    Membuat Objek Peta
+
+    var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+
+    Menambahkan fungsi initialize() ke dalam event window load agar dipanggil saat web dibuka
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    Membuat tag <div> sebagai kontainer untuk menampilkan peta.
+
+    <div id="googleMap" style="width:100%;height:380px;"></div>
+
+Sehingga kode lengkapnya akan menjadi seperti ini: <a href="contohgmaps/contohgmaps.html">Klik</a>
+</p>
+</body>
+</html>
