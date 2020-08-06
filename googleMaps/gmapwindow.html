@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar AJAX dengan JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <a href="../index.html">Kembali</a><br>
+    <p>
+Tutorial Google Maps API: Cara Menggunakan Info Window untuk Menampilkan Informasi
+# Google Maps # Javascript # API
+
+Info Window adalah objek yang digunakan untuk menampilkan informasi pada suatu titik koordinat tertentu. Biasanya digunakan bersamaan dengan marker.
+
+Contoh Info Window:
+
+Contoh Info Window
+
+Info Window dapat kita isi dengan kode HTML. Sehingga data yang ditampilkan di dalam jendela Info Window bisa kita berikan style CSS agar terlihat menarik.
+Cara Membuat Info Window
+
+Pertama yang harus kita buat adalah isi atau informasi yang akan kita tampilkan di dalam info window.
+
+var contentString = '<h3>Hello Dunia!</h3>';
+
+Konten info window berupa string dari HTML.
+
+Lalu membuat objek infowindow dengan memberikan properti content dari contentString yang sudah dibuat.
+
+var infowindow = new google.maps.InfoWindow({
+    content: contentString
+});
+
+Selain properti content, info window juga memiliki properti:
+
+    pixelOffset berisi jarak ujung info window ke koordinat posisi info window diletakkan.
+    position berisi LatLng atau koordinat untuk meletakkan info window pada peta.
+    maxWidth menetapkan lebar maksimum info window dalam piksel.
+
+Sementara untuk method info window ada:
+
+    open() untuk menampilkan info window;
+    close() untuk menutup info window;
+    setPosition() untuk mengubah posisi info window.
+
+Contoh Kode Info Window
+
+Setelah mengetahui cara membuat info window, sekarang mari kita coba membuat kode lengkapnya.
+
+Coba ikuti kode berikut: <a href="contohgmaps/window.html">Klik</a>
+</p>
+<p>
+        Membuat Info Window dengan Marker
+
+        Biasanya info window digunakan bersama marker. Info Window akan ditampilkan ketika marker diklik.
+        
+        Untuk melakukan ini, kita harus memanggil fungsi infowindow.open() pada event marker diklik, seperti ini:
+        
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+        
+        Kode lengkapnya akan menjadi seperti ini: <a href="contohgmaps/windowmarker.html">Klik</a>
+</p>
+</body>
+</html>

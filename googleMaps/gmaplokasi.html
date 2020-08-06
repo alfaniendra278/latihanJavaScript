@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar AJAX dengan JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <a href="../index.html">Kembali</a><br>
+    <p>Mengenal Objek Marker
+
+Marker merupakan sebuah objek yang bisa kita buat dengan kode berikut:
+
+var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(-8.5830695,116.3202515),
+    map: peta
+});
+
+Terdapat dua properti penting yang harus diberikan ke marker:
+
+    position adalah posisi koordinat latitude dan longitude marker pada peta.
+    map objek dari peta (Google Map).
+
+Contoh: <a href="contohgmaps/contohgmaplokasi.html">Klik</a>
+<p>
+    Animasi Marker
+
+Selain dua properti wajib, ada juga properti opsional seperti animation untuk membuat animasi pada marker.
+
+Contoh:
+
+var marker=new google.maps.Marker({
+    position: new google.maps.LatLng(-8.5830695,116.3202515),
+    map: peta,
+    animation: google.maps.Animation.BOUNCE
+});
+
+Kita memberikan nilai google.maps.Animation.BOUNCE terhadap properti animation. Artinya, animasi yang kita inginkan adalah berupa pentalan (bounce).
+
+Contoh kode lengkapnya: <a href="contohgmaps/animasimarker.html">Klik</a>
+<p>
+        Selain animasi BOUNCE ada juga DROP (google.maps.Animation.DROP).
+</p>
+<p>
+        Kustom Ikon
+
+        Apabila kita tidak ingin menggunakan ikon bawaan dari marker yang berwarna merah. kita bisa membuat kustom ikon sendiri dengan properti icon.
+        
+        Ikon Google maps
+        
+        Nilai dari properti icon dapat berupa URL dari gambar ikon yang akan digunakan.
+        
+        Format ikon tidak harus .ico, format gambar seperti jpg, png, dan gif juga diterima.
+        
+    
+        var marker=new google.maps.Marker({
+            position: new google.maps.LatLng(-8.623592, 116.222123),
+            map: peta,
+            icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+        });
+        Contoh: <a href="contohgmaps/customicon.html">klik</a><br>Pastikan menggunakan ukuran ikon 32x32 pixel agar terlihat bagus.
+    </p>
+<p>
+        Membuat Marker Saat Peta diklik
+
+        Bagaimana kalau kita ingin membuat marker ketika peta diklik?
+        
+        Hal ini dapat dilakukan dengan menambahkan event listerner klik pada peta. Lalu memanggil fungsi untuk membuat marker.
+        
+        Contoh fungsi untuk membuat marker:
+        
+        function taruhMarker(peta, posisiTitik){
+            // membuat Marker
+            var marker = new google.maps.Marker({
+                position: posisiTitik,
+                map: peta
+            });
+        }
+        
+        Lalu fungsi tersebut kita panggil saat event peta diklik:
+        
+        google.maps.event.addListener(peta, 'click', function(event) {
+            taruhMarker(this, event.latLng);
+        });
+        
+        Fungsi taruhMarker() membutuhkan dua parameter, yaitu: peta dan posisiTitik agar bisa membuat marker.
+        
+        Pada contoh di atas, kita memberikan this untuk objek peta dan event.latLng untuk posisi marker.
+        
+        Kenapa menggunakan this?
+        
+        Karena fungsi tersebut dipanggil di dalam event peta dan this sudah mewakili objek dari peta.
+        
+        Contoh kode lengkapnya: <a href="contohgmaps/marker.html">Klik</a>
+</p>
+<p>
+        Membuat Hanya Satu Marker
+
+        Bagaimana kalau kita ingin membuat hanya satu marker saja ketika petanya diklik?
+        
+        Kita harus melakukan mdofikasi terhadap fungsi taruhMarker() seperti ini:
+        
+        var marker;
+        function taruhMarker(peta, posisiTitik){
+            
+            if( marker ){
+              // pindahkan marker
+              marker.setPosition(posisiTitik);
+            } else {
+              // buat marker baru
+              marker = new google.maps.Marker({
+                position: posisiTitik,
+                map: peta
+              });
+            }
+            
+        }
+        
+        Objek atau variabel marker kita taruh di luar fungsi agar menjadi variabel global.
+        
+        Lalu di dalam fungsi taruhMarker() kita melakukan pengecekan dengan IF/ELSE.
+        
+        if(marker){
+          //...
+        } else {
+          //...
+        }
+        
+        Jika ada marker di peta, maka cukup pindahkan posisinya saja. Tapi kalau belum ada, maka buat yang baru.
+        
+        Untuk memindahkan posisi marker, kita cukup memanggil method setPosition() dengan parameter koordinat yang baru:
+        
+        marker.setPosition(posisiTitik);
+        contoh lengkapnya: <a href="contohgmaps/markersatu.html">Klik</a>
+        
+</p>
+</p>
+</p>
+</p>
+<p>
+        Bagaimana Cara Mengambil Titik Koordinat dari Marker?
+
+        Pertanyaan bagus.
+        
+        Mengambil titik koordinat dari marker biasnya kita butuhkan saat membuat form input. Lalu nilai koordinat tersebut dikirim ke database.
+        
+        Kita bisa mengambil nilai koordinat dari marker dari dalam fungsi taruhMarker() atau saat event peta diklik.
+        
+        Contoh:
+        
+        function taruhMarker(peta, posisiTitik){
+            
+            if( marker ){
+              // pindahkan marker
+              marker.setPosition(posisiTitik);
+            } else {
+              // buat marker baru
+              marker = new google.maps.Marker({
+                position: posisiTitik,
+                map: peta
+              });
+            }
+        
+            console.log("Posisi marker: " + posisiTitik);
+            
+        }
+        
+        Kode di ata akan menampilkan koordinat posisi dari marker ke console.
+        
+        Posisi marker saat peta diklik
+        
+        Lalu bagaimana agar nilai dari koordinat tersebut kita taruh di dalam form?
+        
+        Kita bisa memanfaatkan DOM untuk mengirim nilai tersebut ke from.
+        
+        Contoh kode form-nya:
+        
+        form action="" method="post">
+            input type="text" id="lat" name="lat" value="">
+            input type="text" id="lng" name="lng" value="">
+        /form>
+        
+        Lalu pada fungsi taruhMarker() kita berikan nilai untuk elemen tersebut.
+        
+        function taruhMarker(peta, posisiTitik){
+            
+            if( marker ){
+              // pindahkan marker
+              marker.setPosition(posisiTitik);
+            } else {
+              // buat marker baru
+              marker = new google.maps.Marker({
+                position: posisiTitik,
+                map: peta
+              });
+            }
+        
+            // isi nilai koordinat ke form
+            document.getElementById("lat").value = posisiTitik.lat();
+            document.getElementById("lng").value = posisiTitik.lng();
+            
+        }
+        
+        Kode lengkap: <a href="contohgmaps/ambilkordinatmarker.html">Klik</a><br>Nah kalau sudah nilai koordinatnya ada di form, kita tinggal kirim saja ke database.
+
+        Selain menggunakan input type="text”, kita juga bisa menggunakan hidden.
+        
+<br>        form action="" method="post">
+<br>            input type="hidden" id="lat" name="lat" value="">
+<br>            input type="hidden" id="lng" name="lng" value="">
+<br>        /form>
+        
+</p>
+</body>
+</html>

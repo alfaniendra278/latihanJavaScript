@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar AJAX dengan JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <a href="../index.html">Kembali</a><br>
+    <p>
+Mengatasi Peta (Google Map) yang tidak Ditampilkan di Modal
+# HTML # Bootstrap # Google Maps # Javascript # API
+
+Ketika saya menggunakan modal untuk menampilkan peta (Google Maps), petanya tidak mau tampil. Entah mengapa? setelah ukuran layarnya di-resize, petanya bisa tampil. Mungkin karena div di dalam modal bersifat dinamis atau responsif.
+
+Peta kosong, hanya ada warna abu-abu. Solusi dari masalah ini saya temukan di Stackoverflow. MarcoK memberikan penjelasan jawaban atas masalah ini.
+
+Google Maps memang akan menampilkan area abu-abu (grey) kalau ditempatkan di elemen dinamis. Oleh karna itu, kita perlu memanggil fungsi "resize" ketika animasi modal sudah selesai.
+
+Bootstrap 3:
+
+$("#modal-peta”).on(“shown.bs.modal”, function () {
+      google.maps.event.trigger(peta, “resize”);
+});
+
+Bootstrap 2:
+
+$('#modal-peta’).on(‘shown’, function () {
+     google.maps.event.trigger(peta, “resize”);
+});
+
+#modal-peta adalah nama id dari elemen modal tempat peta tersebut ditampilkan dan variabel peta adalah variabel objek dari peta (Google Maps). Kode di atas, ditulis dalam fungsi initialize() atau persiapan peta, lihat tutorial sebelumnya.
+
+
+Referensi: <br> http://stackoverflow.com/a/11743005 <br> https://www.petanikode.com/google-map-modal/
+</p>
+</body>
+</html>

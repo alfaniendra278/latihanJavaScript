@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar AJAX dengan JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <a href="../index.html">Kembali</a><br>
+    <p>
+# Javascript # Google Maps # API
+
+Saat membuat Google Maps pada Modal di template Admin LTE, ada masalah yang membuat saya bingung.
+
+Posisi titik tengah Google maps selalu berada di pojok kiri atas. Meskipun saya sudah set titik tengahnya pada trigger event resize, namun tetap saja posisinya berada di pojok kiri atas.
+
+Posisi titik tengah google maps di pojok
+
+Setelah digeser:
+
+Posisi titik tengah setelah digeser
+
+Sementara itu, kode yang saya gunakan saat event modal ditampilkan.
+
+$("#modal-peta").on("shown.bs.modal", function() {
+    
+     google.maps.event.trigger(peta, "resize", function() {
+         peta.setCenter(peta.getCenter());
+     });
+
+});
+
+Ternyata ada yang salah dengan kode tersebut.
+
+Setelah saya telusuri dengan kata kunci "Google Maps center top left" di Google, saya menemukan jawabanya.
+
+Ternyata saya salah dalam meletakan fungsi untuk mengatur posisi tenganya.
+
+Kalau kita perhatikan kode di atas, fungsi setCenter() akan dipanggil ketika peta di-resize.
+
+Seolusinya:
+
+Fungsi setCenter() harus dipanggil ketika modal ditampilkan, bukan saat peta di-resize. Sehingga kodenya akan menjadi seperti ini:
+
+$("#modal-peta").on("shown.bs.modal", function() {
+
+    // ambil dulu titik tengahnya
+    var tengah = peta.getCenter();
+    
+    // resize
+    google.maps.event.trigger(peta, "resize");
+    
+    // set ulang titik tengah
+    peta.setCenter(tengah);
+
+});
+
+Hasilnya:
+
+Posisi tengah google maps di modla
+
+Referensi: http://stackoverflow.com/a/8559243
+
+</p>
+</body>
+</html>

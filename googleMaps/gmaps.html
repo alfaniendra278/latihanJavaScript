@@ -30,9 +30,9 @@ Menampilkan Peta Google Maps di Web
 
 Ada beberapa langkah yang harus kita lakukan untuk menampilkan peta Google Maps di dalam Web:
 
-    Menyisipkan library Google Map di dalam tag <head> atau di dalam <body>.
+    Menyisipkan library Google Map di dalam tag head> atau di dalam body>.
 
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    script src="http://maps.googleapis.com/maps/api/js">/script>
 
     Membuat fungsi initialize() untuk menyiapkan peta:
 
@@ -56,11 +56,68 @@ Ada beberapa langkah yang harus kita lakukan untuk menampilkan peta Google Maps 
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    Membuat tag <div> sebagai kontainer untuk menampilkan peta.
+    Membuat tag div> sebagai kontainer untuk menampilkan peta.
 
-    <div id="googleMap" style="width:100%;height:380px;"></div>
+    div id="googleMap" style="width:100%;height:380px;">/div>
 
 Sehingga kode lengkapnya akan menjadi seperti ini: <a href="contohgmaps/contohgmaps.html">Klik</a>
+</p>
+<p>
+    Mudah bukan?
+
+Mari kita bahas lebih dalam…
+
+Pertama dimulai dari menyisipkan library Google Maps:
+
+script src="http://maps.googleapis.com/maps/api/js">/script>
+
+Library ini bisa disisipkan di dalam tag head> maupun body>. Yang penting library ini disisipkan pertama kali sebelum skrip initialize().
+
+Penysipan library Google Mpas kadang juga membutuhkan API Key untuk lingkungan production.
+
+Cara Membuat API Key Google Maps bisa di baca di: Cara Membuat API Key Google Maps
+
+Berkutnya kita membuat fungsi initialize() yang bertujuan untuk menyiapkan peta.
+
+Di dalam fungsi initialize() terdapat definisi properti yang dibutuhkan peta.
+
+var propertiPeta = {
+    center: new google.maps.LatLng(-8.5830695,116.3202515),
+    zoom:9,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+};
+
+Ada tiga properti yang kita berikan:
+
+    center adalah properti untuk mengatur posisi tengah Google Map saat pertama kali ditampilkan. Pada contoh di atas saya memberikan nilai koordinat untuk Pulau Lombok sebagai koordinat nilai tengahnya.
+
+    zoom adalah tingkat skala Google Maps. Sebagai acuan, berikut ini tingkat sekala yang biasanya digunakan:
+        0: Bumi (smua peta ditampilkan)
+        1: Peta Dunia
+        5: Landmass/continent
+        10: Kota
+        15: Jalan
+        20: Bangunan
+
+    mapTypeId adalah tipe Google Map yang akan digunakan. Pada Contoh di atas, kita menggunakan ROADMAP. Selain ROADMAP ada juga satellite, terrain, dan hybrid.
+
+Setelah itu kita membuat objek peta berdasarkan properti tersebut:
+
+var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+
+Perhatikan di asana kita menyatakan untuk menggunakan elemen dengan ID googleMap. Berarti nanti kita harus membuat elemen HTML dengan ID googleMap.
+
+Lalu berikutnya kita mendaftarkan fungsi initialize() ke dalam event window load agar dieksekusi saat halaman web dibuka.
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+Terakhir membuat elemen HTML dengan ID googleMap:
+
+div id="googleMap" style="width:100%;height:380px;">/div>
+
+Perlu diperhatikan:
+
+Elemen ini harus memiliki tinggi dan Lebar. Pada contoh di atas kita memberikan tinggi 380px dan lebarnya 100% dari layar.
 </p>
 </body>
 </html>
