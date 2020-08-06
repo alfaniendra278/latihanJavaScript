@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar AJAX dengan JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <a href="../index.html">Kembali</a><br>
+    <p>
+        Bagaimana Cara Kerjanya?
+
+Pertama kita membutuhkan izin user, apakah dia mau memberikan akses webcam atau tidak.
+
+Metode atau method yang digunakan untuk meminta izin user adalah getUserMedia. Method ini tidak hanya untuk mengakses webcam saja, kita juga bisa mengakses media lain seperti mikrofon.
+
+Setelah user memberikan izin, selanjutnya kita tinggal render gambar dari webcam ke elemen video>.
+
+Elemen video> merupakan elemen baru yang ditambahkan pada HTML 5 untuk menampilkan video.
+
+Untuk lebih jelasnya, mari kita coba dalam kode…
+Menampilkan Video Webcam di HTML
+
+Pertama silahkan buat sebuah file HTML.
+
+div>
+    video autoplay="true" id="video-webcam">
+        Browsermu tidak mendukung bro, upgrade donk!
+    /video>
+/div>
+
+Pada file HTML di atas, kita memberikan atribut autoplay="true" agar videonya diputar secara otomatis dan id="video-webcam" untuk memudahkan pemilihan elemen di Javascript.
+
+Setelah itu, silahkan buat kode Javascript-nya: <br><a href="contohvideo/webcamp.html">Klik</a>
+    </p>
+</body>
+</html>
